@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var pg = require('pg');
 require('locus');
 
 var routes = require('./routes/index');
@@ -30,6 +31,8 @@ app.use(methodOverride('_method'));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/users/:users_id/posts', postsRoutes);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,5 +65,16 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM users', function(err, result) {
+      done();
+      if (err)
+      { console.error(err); response.send("Error " + err); }
+      else
+      { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+})
 
 module.exports = app;

@@ -3,10 +3,10 @@ var router = express.Router({mergeParams: true});
 var knex = require('../db/knex')
 
 router.get('/', function(req,res){
-  eval(locus);
-  var postId = req.params.id;
-  var user_id = req.params.user_id;
-  knex('posts').where('id', postId)
+  knex('posts').then(function(result, err){
+    var users = results;
+    res.render('/index', {user: users});
+  })
 })
 
 module.exports = router
