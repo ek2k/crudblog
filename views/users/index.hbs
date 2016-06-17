@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Users</title>
+  </head>
+  <body>
+    <h3>All users</h3>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>User Name</th>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <td>{{@user}}{{full_name}}</td>
+          <td><a href="/users/{{@user}}{{id}}">{{@user}}{{username}}</a></td>
+          <td><form action="users/{{@user}}{{id}}?_method=delete" method="POST">
+            <input type="submit" value="DELETE">
+          </form></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>
