@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a posts</title>
+  </head>
+  <body>
+    <h2>Write a new post</h2>
+
+    <form action="/users/{{user_id}}/posts" method="POST">
+      <label for="post">Write your post:</label>
+      <input type="text" name="post" placeholder="Post here">
+      <input type="submit" value="Post it!">
+    </form>
+  </body>
+</html>

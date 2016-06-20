@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   })
 });
 
-//got to site to add user
+//get to site to add user
 router.get('/new', function(req, res){
   res.render('users/new')
 })

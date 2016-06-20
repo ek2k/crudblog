@@ -14,10 +14,11 @@
       <tbody>
         {{#each posts}}
         <tr>
-          <td>{{@}}</td>
-          <td></td>
-          <td></td>
+          <td>{{@post}}{{id}}</td>
+          <td>{{@post}}{{posts}}</td>
+          <td>{{@post}}{{username}}</td>
         </tr>
+        {{/each}}
       </tbody>
     </table>
   </body>
